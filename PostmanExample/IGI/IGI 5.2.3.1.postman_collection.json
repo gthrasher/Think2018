@@ -1,0 +1,156 @@
+{
+	"info": {
+		"name": "IGI 5.2.3.1",
+		"_postman_id": "5756b69e-a4f9-d3c5-841c-202cc2a78c4f",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "IGI Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bcd59618-d35f-4d85-97fa-0e50fbbb9fed",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"checking if IGI login returned Bearer Token...\");",
+							"console.log(pm.response.text());",
+							"",
+							"pm.environment.set(\"access_token\", pm.response.text());",
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"type": "any"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "realm",
+						"value": "{{adminRealm}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{igiurl}}/security/login",
+					"host": [
+						"{{igiurl}}"
+					],
+					"path": [
+						"security",
+						"login"
+					]
+				},
+				"description": "initial login request to get Bearer Token for subsequent requests"
+			},
+			"response": []
+		},
+		{
+			"name": "IGI ResourceTypes",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/scim+json"
+					},
+					{
+						"key": "realm",
+						"value": "{{adminRealm}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{igiurl}}/resourcetypes",
+					"host": [
+						"{{igiurl}}"
+					],
+					"path": [
+						"resourcetypes"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Search Users",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{access_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/scim+json"
+					},
+					{
+						"key": "realm",
+						"value": "{{userRealm}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"schemas\": [\"urn:ietf:params:scim:api:messages:2.0:SearchRequest\"],\n\t\"filter\": \"urn:ietf:params:scim:schemas:core:2.0:User:name.givenName sw \\\"Gr\\\"\",\n\t\"sortBy\": \"name.familyName\",\n\t\"sortOrder\": \"ascending\",\n\t\"startPage\": 1,\n\t\"count\": 10\n\t}"
+				},
+				"url": {
+					"raw": "{{igiurl}}/agc/users/.search",
+					"host": [
+						"{{igiurl}}"
+					],
+					"path": [
+						"agc",
+						"users",
+						".search"
+					]
+				},
+				"description": "searches for IGI Users with filter"
+			},
+			"response": []
+		}
+	]
+}

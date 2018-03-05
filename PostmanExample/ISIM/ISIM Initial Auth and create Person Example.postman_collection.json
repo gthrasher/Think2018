@@ -1,0 +1,204 @@
+{
+	"info": {
+		"name": "ISIM Initial Auth and create Person Example",
+		"_postman_id": "4dfee2f2-1689-4563-a55a-e2e143848bce",
+		"description": "Initial calls to ISIM REST APIs, in order to authenticate and make any other calls.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "JSESSIONID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{isimurl}}/itim/restlogin/login.jsp",
+					"host": [
+						"{{isimurl}}"
+					],
+					"path": [
+						"itim",
+						"restlogin",
+						"login.jsp"
+					]
+				},
+				"description": "Gets JSESSIONID for ISIM REST calls"
+			},
+			"response": []
+		},
+		{
+			"name": "LtpaToken2",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "j_username",
+							"value": "itim manager",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "j_password",
+							"value": "secret",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{isimurl}}/itim/j_security_check",
+					"host": [
+						"{{isimurl}}"
+					],
+					"path": [
+						"itim",
+						"j_security_check"
+					]
+				},
+				"description": "returns the LtpaToken2 from ISIM REST"
+			},
+			"response": []
+		},
+		{
+			"name": "CSRFToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "109df60a-5fe6-4307-980e-b60a7f62a25e",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"CSRFToken is present\", function () {",
+							"    pm.response.to.have.header(\"CSRFToken\");",
+							"});",
+							"",
+							"console.log(pm.response.headers.get(\"CSRFToken\"));",
+							"console.log(\"setting CSRFToken in env var\");",
+							"",
+							"",
+							"pm.environment.set(\"csrftoken\", pm.response.headers.get(\"CSRFToken\"));"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "{{isimurl}}/itim/rest/systemusers/me",
+					"host": [
+						"{{isimurl}}"
+					],
+					"path": [
+						"itim",
+						"rest",
+						"systemusers",
+						"me"
+					]
+				},
+				"description": "returns CSRFToken to be used in any other requests"
+			},
+			"response": []
+		},
+		{
+			"name": "Get ORG ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ad33d161-48b5-4699-b927-beb88f190927",
+						"type": "text/javascript",
+						"exec": [
+							"var respBody = JSON.parse(responseBody);",
+							"var respBodyHref = respBody[0]._links.self.href;",
+							"var respBodyHrefArray = respBodyHref.split(\"/\");",
+							"var orgID = respBodyHrefArray[5];",
+							"",
+							"pm.environment.set(\"orgID\", orgID);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "CSRFToken",
+						"value": "{{csrftoken}}"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{isimurl}}/itim/rest/organizationcontainers/organizations",
+					"host": [
+						"{{isimurl}}"
+					],
+					"path": [
+						"itim",
+						"rest",
+						"organizationcontainers",
+						"organizations"
+					]
+				},
+				"description": "gets the Organization ID to reference in other requests"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Person",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1baa8da9-5c6a-40a7-8fff-9fa7fb9bab92",
+						"type": "text/javascript",
+						"exec": [
+							"var oldNameIncr = pm.environment.get(\"nameIncr\");",
+							"pm.environment.set(\"nameIncr\", parseInt(oldNameIncr) + 1);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "CSRFToken",
+						"value": "{{csrftoken}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \n   \"profileName\":\"Person\",\n   \"orgID\":\"{{orgID}}\",\t\n   \"_attributes\": {\n\t  \t\"sn\":\"Smithson{{nameIncr}}\",\n   \t\t\"cn\":\"Chuck\"\n    }\n  }"
+				},
+				"url": {
+					"raw": "{{isimurl}}/itim/rest/people",
+					"host": [
+						"{{isimurl}}"
+					],
+					"path": [
+						"itim",
+						"rest",
+						"people"
+					]
+				},
+				"description": "creates a person object"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,75 @@
+{
+	"info": {
+		"name": "ISIM Node Example",
+		"_postman_id": "011f702a-3d6a-44e1-b73b-d4ac3f856ade",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ISIM Node Auth ",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8888/isimAuth?authuser={{isimuser}}&authpassword={{isimpassword}}&isimurl={{isimurl}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8888",
+					"path": [
+						"isimAuth"
+					],
+					"query": [
+						{
+							"key": "authuser",
+							"value": "{{isimuser}}",
+							"equals": true
+						},
+						{
+							"key": "authpassword",
+							"value": "{{isimpassword}}",
+							"equals": true
+						},
+						{
+							"key": "isimurl",
+							"value": "{{isimurl}}",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "ISIM Node Create Person",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isimurl\": \"{{isimurl}}\",\n\t\"authuser\": \"{{isimuser}}\",\n\t\"authpassword\": \"{{isimpassword}}\",\n\t\"container\": \"Support\",\n\t\"newuser\": {\n\t\t\"cn\": \"jill jones\",\n\t\t\"givenname\": \"jill\",\n\t\t\"sn\": \"jones\",\n\t\t\"mail\": \"jjones@email.lab\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{nodeurl}}/isimCreatePerson",
+					"host": [
+						"{{nodeurl}}"
+					],
+					"path": [
+						"isimCreatePerson"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

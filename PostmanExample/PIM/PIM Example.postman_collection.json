@@ -1,0 +1,66 @@
+{
+	"info": {
+		"name": "PIM Example",
+		"_postman_id": "181c0551-6e17-4b8b-b921-75e76fd1bb51",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PIM Search Person",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"type": "any"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "{{pimurl}}/people?filter=(cn=Grey*)",
+					"host": [
+						"{{pimurl}}"
+					],
+					"path": [
+						"people"
+					],
+					"query": [
+						{
+							"key": "filter",
+							"value": "(cn=Grey*)",
+							"equals": true,
+							"description": "enter filter string in this parameter"
+						}
+					]
+				},
+				"description": "test request showing Basic Auth and searching PIM for a User"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,5 @@
+Bearer Token:
+    BTOK=$(curl -H "realm: Admin" -u admin:admin https://igiserver:9343/igi/v2/security/login)
+
+Request:
+    curl -H "Authorization: Bearer $BTOK" -H 'Content-Type: application/scim+json' -H 'realm: Ideas' -d '{"schemas": ["urn:ietf:params:scim:api:messages:2.0:SearchRequest"],"filter": "urn:ietf:params:scim:schemas:core:2.0:User:name.givenName sw \"Grey\""}' -v -X POST https://igiserver:9343/igi/v2/agc/users/.search

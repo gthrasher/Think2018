@@ -1,0 +1,1 @@
+curl -u pim1:Test1234 -H “Accept: application/json” "https://pimserver/ispim/rest/people?filter=(cn=Grey*)"

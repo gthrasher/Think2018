@@ -1,0 +1,11 @@
+JSESSIONID: 
+    curl --cookie-jar isimcookie.jar https://isimserver/itim/restlogin/login.jsp
+
+LtpaToken2: 
+    curl --cookie-jar isimcookie.jar --cookie isimcookie.jar -X POST "https://isimserver/itim/j_security_check?j_username=user1&j_password=Test1234"
+
+CSRFToken: 
+    CTOK=$(curl --cookie isimcookie.jar -I https://isimserver/itim/rest/systemusers/me | grep CSRFToken | sed -n -e 's/^.*CSRFToken: //p')
+
+Request:
+    curl --cookie isimcookie.jar -H 'CSRFToken: "$CTOK"' https://isimserver/itim/rest/people?cn=*Grey*
