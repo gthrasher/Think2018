@@ -16,9 +16,9 @@ I've also included a Postman Collection and Environment, that can be used to tes
 </br>
 In the Environment, the following will need to be update:
 
-Environment Variable | Description
----------------------|----------------
-**nodeurl** | url to your running node application (example: `http://localhost:8888`)
-**isimurl** | url to your ISIM serveer (example: `http://isimserver:9080`)
-**isimuser** | valid ISIM Account ID (example: itim manager)
-**isimpassword** | password for the ISIM Account (example: secret)
+Environment Variable | Description | example
+---------------------|-------------|---------
+**nodeurl** | url to your running node application | `http://localhost:8888`
+**isimurl** | url to your ISIM serveer | `http://isimserver:9080`
+**isimuser** | valid ISIM Account ID | itim manager
+**isimpassword** | password for the ISIM Account | secret
