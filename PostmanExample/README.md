@@ -8,3 +8,5 @@ Each should be imported into Postman.
 Each Collection should be run with its corresponding Environment
 </br>
 Each Product folder will also contain a README.md with details.
+</br>
+**NOTE:** Postman used to be a Chrome plugin, but is now a stand alone app which can be downloaded here: https://www.getpostman.com/
