@@ -14,3 +14,6 @@ On `line 13`, update the account id and password in the `auth` param | `.... aut
 In `lines 24 - 27`, update email addresses etc in the `sender`, `recievers`, `message`, `To` params | see example.py for example
 In `line 41`, change `emailserver` to the hostname of your email server | `... smtplib.SMTP("emailserver",25)`
 
+**NOTE: The code/documentation found here is NOT supported, and is supplied only as examples/reference.
+Use at your own risk** :metal:
+
