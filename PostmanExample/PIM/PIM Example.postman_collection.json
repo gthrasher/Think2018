@@ -42,7 +42,7 @@
 				],
 				"body": {},
 				"url": {
-					"raw": "{{pimurl}}/people?filter=(cn=Grey*)",
+					"raw": "{{pimurl}}/people?filter={{filter}}",
 					"host": [
 						"{{pimurl}}"
 					],
@@ -52,7 +52,7 @@
 					"query": [
 						{
 							"key": "filter",
-							"value": "(cn=Grey*)",
+							"value": "{{filter}}",
 							"equals": true,
 							"description": "enter filter string in this parameter"
 						}

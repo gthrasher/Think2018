@@ -42,13 +42,13 @@
 					"urlencoded": [
 						{
 							"key": "j_username",
-							"value": "itim manager",
+							"value": "{{isimusername}}",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "j_password",
-							"value": "secret",
+							"value": "{{isimpassword}}",
 							"description": "",
 							"type": "text"
 						}

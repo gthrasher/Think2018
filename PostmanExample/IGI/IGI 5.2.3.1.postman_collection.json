@@ -135,7 +135,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"schemas\": [\"urn:ietf:params:scim:api:messages:2.0:SearchRequest\"],\n\t\"filter\": \"urn:ietf:params:scim:schemas:core:2.0:User:name.givenName sw \\\"Gr\\\"\",\n\t\"sortBy\": \"name.familyName\",\n\t\"sortOrder\": \"ascending\",\n\t\"startPage\": 1,\n\t\"count\": 10\n\t}"
+					"raw": "{\n\t\"schemas\": [\"urn:ietf:params:scim:api:messages:2.0:SearchRequest\"],\n\t\"filter\": \"urn:ietf:params:scim:schemas:core:2.0:User:name.givenName sw \\\"{{filter}}\\\"\",\n\t\"sortBy\": \"name.familyName\",\n\t\"sortOrder\": \"ascending\",\n\t\"startPage\": 1,\n\t\"count\": 10\n\t}"
 				},
 				"url": {
 					"raw": "{{igiurl}}/agc/users/.search",
