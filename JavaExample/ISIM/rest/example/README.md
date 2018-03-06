@@ -1,4 +1,4 @@
-# JavaExamples
+# Java Examples
 
 This section contains a basic Java project that makes use of the sample REST project included with ISIM.
 
