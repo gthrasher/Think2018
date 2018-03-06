@@ -1,4 +1,4 @@
-#IGI Postman Example
+# IGI Postman Example
 This contains a Postman Collection and Environment that shows how to:
 * Authenticate to IGI
   * Store the returned Bearer Token
