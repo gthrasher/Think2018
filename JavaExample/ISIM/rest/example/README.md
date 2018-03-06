@@ -9,3 +9,6 @@ The program takes input from std in.
 
 `BASE_URL` in **rest.example.Constants** should be udpated with your ISIM URL </br>
 `(example: http://isimserver:9080/itim )`
+
+**NOTE: The code/documentation found here is NOT supported, and is supplied only as examples/reference.
+Use at your own risk** :metal:
