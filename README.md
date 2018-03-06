@@ -1,5 +1,5 @@
 # Think2018
-Repository to store examples for Think Session #8874 "REST With Identity"
+Repository to store examples for **Think Session #8874 "REST With Identity"**
 
 Each example is broken down by:
 * **Language:**
