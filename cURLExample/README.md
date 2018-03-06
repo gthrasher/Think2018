@@ -11,3 +11,6 @@ Each folder contains a single text file...the different commands are labeled to 
 Each command should be run in sequence, via cURL (command line).  
 
 **NOTE: the examples are formatted for Linux...if so may need to be modified for other platforms.**
+
+**NOTE: The code/documentation found here is NOT supported, and is supplied only as examples/reference.
+Use at your own risk** :metal:
