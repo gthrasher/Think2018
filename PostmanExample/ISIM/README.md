@@ -17,3 +17,6 @@ Environment Variable | Description | Example
 **isimpassword** | ISIM Account password | `secret`
 
 **Be sure to select the _ISIM Env Example_ Environment when running the Collection**
+
+**NOTE: The code/documentation found here is NOT supported, and is supplied only as examples/reference.
+Use at your own risk** :metal:
