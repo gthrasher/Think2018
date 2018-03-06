@@ -1,0 +1,17 @@
+{
+  "name": "testnode",
+  "description": "testnode description",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "dotenv": "*",
+    "express": "*",
+    "querystring": "*",
+    "request": "*",
+    "request-promise-native": "^1.0.5"
+  }
+}
