@@ -22,3 +22,6 @@ Environment Variable | Description | example
 **isimurl** | url to your ISIM serveer | `http://isimserver:9080`
 **isimuser** | valid ISIM Account ID | itim manager
 **isimpassword** | password for the ISIM Account | secret
+
+**NOTE: The code/documentation found here is NOT supported, and is supplied only as examples/reference.
+Use at your own risk** :metal:

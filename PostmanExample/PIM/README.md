@@ -14,3 +14,6 @@ Environment Variable | Description | Example
 **filter** | filter string to be used in the Search | `(cn=Bob*)`
 
 **Be sure to select the _PIM Env_ Environment when running the Collection**
+
+**NOTE: The code/documentation found here is NOT supported, and is supplied only as examples/reference.
+Use at your own risk** :metal:
