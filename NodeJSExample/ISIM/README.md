@@ -14,7 +14,7 @@ For both there are details in the comments above each (in `app.js`).
 
 I've also included a Postman Collection and Environment, that can be used to test these services.
 </br>
-In the Postman Environment, the following will need to be update:
+In the Postman Environment, the following will need to be updated:
 
 Environment Variable | Description | example
 ---------------------|-------------|---------
