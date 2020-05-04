@@ -13,7 +13,6 @@ $url = "$($baseUrl)/itim/restlogin/login.jsp"
 $webrequest = Invoke-WebRequest -Uri $url -SessionVariable websession
 
 # get LtpaToken2 (try block added to avoid returning the expected 404 error)
-# 
 $url2 = "$($baseUrl)/itim/j_security_check?j_username=$($isimUserName)&j_password=$($isimUserPassword)"
 $webrequest2 =  try { 
                 Invoke-WebRequest -Uri $url2 -WebSession $websession -Method POST
