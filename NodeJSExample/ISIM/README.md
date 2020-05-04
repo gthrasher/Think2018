@@ -14,7 +14,7 @@ For both there are details in the comments above each (in `app.js`).
 
 I've also included a Postman Collection and Environment, that can be used to test these services.
 </br>
-In the Postman Environment, the following will need to be update:
+In the Postman Environment, the following will need to be updated:
 
 Environment Variable | Description | example
 ---------------------|-------------|---------
@@ -22,6 +22,8 @@ Environment Variable | Description | example
 **isimurl** | url to your ISIM serveer | `http://isimserver:9080`
 **isimuser** | valid ISIM Account ID | itim manager
 **isimpassword** | password for the ISIM Account | secret
+
+* After copying the files to a node server, `npm install` must be run in order to install all the required packages/dependencies.
 
 **NOTE: The code/documentation found here is NOT supported, and is supplied only as examples/reference.
 Use at your own risk** :metal:
