@@ -1,15 +1,20 @@
 # ID of the Account to search for
 $acctId = $args[0]
 
+# ISIM creds to authenticate with
+$isimUserName = "itim manager"
+$isimUserPassword = "secret"
+
 # base ISIM URL
-$baseUrl = "http://gtisim60.rtp.raleigh.ibm.com:9080"
+$baseUrl = "http://isimserver:9080"
 
 # get JSESSIONID
 $url = "$($baseUrl)/itim/restlogin/login.jsp"
 $webrequest = Invoke-WebRequest -Uri $url -SessionVariable websession
 
 # get LtpaToken2 (try block added to avoid returning the expected 404 error)
-$url2 = "$($baseUrl)/itim/j_security_check?j_username=gthrasher&j_password=Test1234"
+# 
+$url2 = "$($baseUrl)/itim/j_security_check?j_username=$($isimUserName)&j_password=$($isimUserPassword)"
 $webrequest2 =  try { 
                 Invoke-WebRequest -Uri $url2 -WebSession $websession -Method POST
                 } catch {
